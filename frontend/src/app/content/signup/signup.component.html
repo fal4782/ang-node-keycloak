@@ -1,0 +1,92 @@
+<!-- signup.component.html -->
+
+<div
+  class="parent d-flex justify-content-center align-items-center"
+  style="height: 100vh"
+>
+  <div class="card py-3 px-2">
+    <div class="card-body">
+      <h5 class="card-title text-center mb-4">Sign Up</h5>
+
+
+      <form [formGroup]="signupForm" class="p-fluid">
+        <div class="mb-3">
+          <input
+            id="name"
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="Name"
+          />
+          <small
+            *ngIf="
+              signupForm.get('name').errors?.required &&
+              signupForm.get('name').touched
+            "
+            class="text-danger"
+            >Name is required</small
+          >
+        </div>
+
+        <div class="mb-3">
+          <input
+            id="email"
+            type="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Email"
+          />
+          <small
+            *ngIf="
+              signupForm.get('email').errors?.required &&
+              signupForm.get('email').touched
+            "
+            class="text-danger"
+            >Email is required</small
+          >
+          <small
+            *ngIf="
+              signupForm.get('email').errors?.email &&
+              signupForm.get('email').touched
+            "
+            class="text-danger"
+            >Invalid email format</small
+          >
+        </div>
+
+        <div class="mb-3">
+          <input
+            id="password"
+            type="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <small
+            *ngIf="
+              signupForm.get('password').errors?.required &&
+              signupForm.get('password').touched
+            "
+            class="text-danger"
+            >Password is required</small
+          >
+        </div>
+
+        <div class="text-center">
+          <!-- Center align "Sign Up" button -->
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!signupForm.valid"
+            (click)="submit()"
+          >
+            Sign Up
+          </button>
+        </div>
+        <!-- <p class="mt-2 mb-0 text-center">
+          Already a user? <a [routerLink]="['/login']">Log in</a>.
+        </p> -->
+      </form>
+    </div>
+  </div>
+</div>

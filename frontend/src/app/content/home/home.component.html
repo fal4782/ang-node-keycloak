@@ -1,0 +1,23 @@
+<h1>THIS IS THE HOME PAGE!!!!!</h1>
+
+<h4>The list of all users:</h4>
+<ul>
+  <li *ngFor="let user of users">{{ user }}</li>
+</ul>
+
+<form [formGroup]="passwordPolicyForm" (ngSubmit)="updatePasswordPolicy()">
+  <label for="passwordPolicy">Select Password Policy:</label>
+  <select formControlName="passwordPolicy" id="passwordPolicy">
+    <option value="length(8)">Minimum Length</option>
+    <option value="forceExpiredPasswordChange(30)">Expire Password</option>
+    <option value="notUsername(undefined)">Not Username</option>
+    <option value="notEmail(undefined)">Not Email</option>
+    <option value="passwordHistory(3)">Not Recently Used</option>
+  </select>
+
+  <button type="submit">Update Password Policy</button>
+</form>
+
+<button (click)="resetPassword()">Reset Password</button>
+<br />
+<button (click)="logout()">Log Out</button>
